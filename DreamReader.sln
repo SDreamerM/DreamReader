@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EE7369
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{977599EE-D947-4FD4-978A-3BB5F62E2182}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamReader.Database", "Database\DreamReader.Database\DreamReader.Database.csproj", "{AE0C9684-D899-4347-9F2A-87C8BD500A4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +35,16 @@ Global
 		{D23D1007-B1FA-4F29-99B2-F0E4F3E2B0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D23D1007-B1FA-4F29-99B2-F0E4F3E2B0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D23D1007-B1FA-4F29-99B2-F0E4F3E2B0AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0C9684-D899-4347-9F2A-87C8BD500A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0C9684-D899-4347-9F2A-87C8BD500A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0C9684-D899-4347-9F2A-87C8BD500A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0C9684-D899-4347-9F2A-87C8BD500A4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FA732BCB-20B4-4BF1-9E69-B37FEA267957} = {E0FA6983-B1BC-48D1-B829-B43877182871}
+		{AE0C9684-D899-4347-9F2A-87C8BD500A4A} = {977599EE-D947-4FD4-978A-3BB5F62E2182}
 	EndGlobalSection
 EndGlobal
