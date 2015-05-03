@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DreamReaderContentInitializer.cs" />
     <Compile Include="DreamReaderContext.cs" />
     <Compile Include="Entities\DreamReaderUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

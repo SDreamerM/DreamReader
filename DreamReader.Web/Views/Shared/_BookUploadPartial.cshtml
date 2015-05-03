@@ -1,0 +1,40 @@
+﻿<div class="modal fade" id="book-upload-modal" tabindex="-1" role="dialog" aria-labelledby="book-upload-modal-title" aria-hidden="true" data-bind="with: bookUploadViewModel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="book-upload-modal-title">Upload Book</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group text-right" id="file-form-group">
+                        <span class="btn btn-primary fileinput-button">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>Select book</span>
+                            <input type="file" id="file" />
+                        </span>
+                    </div>
+                    <div id="progress" class="progress">
+                        <div class="progress-bar progress-bar-primary"></div>
+                    </div>
+
+                    @*<div class="form-group" data-bind="css: { 'has-error': showValidation() && !email.isValid(), 'has-success': showValidation() && email.isValid() }">
+                        <label class="control-label" for="sign-in-modal-email">Email address</label>
+                        <input type="email" class="form-control" id="sign-in-modal-email" placeholder="Enter email" data-bind="value: email">
+                        <p class="help-block" data-bind="validationMessage: email"></p>
+                    </div>
+                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !password.isValid(), 'has-success': showValidation() && password.isValid() }">
+                        <label class="control-label" for="sign-in-modal-password">Password</label>
+                        <input type="password" class="form-control" id="sign-in-modal-password" placeholder="Password" data-bind="value: password">
+                        <p class="help-block" data-bind="validationMessage: password"></p>
+                    </div>*@
+                    <div class="form-group has-error validation-message-container">
+                        <p class="help-block" data-bind="html: validationMessage"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+﻿<div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="sign-in-modal-title" aria-hidden="true" data-bind="with: signInViewModel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="sign-in-modal-title">Sign In</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !email.isValid(), 'has-success': showValidation() && email.isValid() }">
+                        <label class="control-label" for="sign-in-modal-email">Email address</label>
+                        <input type="email" class="form-control" id="sign-in-modal-email" placeholder="Enter email" data-bind="value: email">
+                        <p class="help-block" data-bind="validationMessage: email"></p>
+                    </div>
+                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !password.isValid(), 'has-success': showValidation() && password.isValid() }">
+                        <label class="control-label" for="sign-in-modal-password">Password</label>
+                        <input type="password" class="form-control" id="sign-in-modal-password" placeholder="Password" data-bind="value: password">
+                        <p class="help-block" data-bind="validationMessage: password"></p>
+                    </div>
+                    <div class="form-group has-error validation-message-container">
+                        <p class="help-block" data-bind="html: validationMessage"></p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bind="click: signIn">Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+﻿.nav .navbar-btn.sign-up-btn {
+    margin-left: 5px;
+}
+
+.nav .navbar-btn.upload-book-btn {
+    margin-right: 5px;
+}
+
+.nav .nav-profile-dropdown-toggle {
+    padding: 5px 0;
+}
+
+    .nav .nav-profile-dropdown-toggle img {
+        height: 40px;
+    }
+
+.validation-message-container {
+    text-align: center;
+}
+
+#book-modal .modal-dialog {
+    margin: 0;
+    width: 100%;
+}
+
+    #book-modal .modal-dialog .navbar {
+        margin-bottom: 0;
+    }
+
+        #book-modal .modal-dialog .navbar .navbar-header {
+            width: 100%;
+        }
