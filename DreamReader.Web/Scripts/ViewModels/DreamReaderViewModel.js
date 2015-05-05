@@ -17,9 +17,9 @@
                 var model = response.data;
                 self.isAuthenticated(model.IsAuthenticated);
                 if (self.isAuthenticated()) {
-                    //self.reloadBooks().done(function (response) {
+                    self.reloadBooks().done(function (response) {
                         self.loading(false);
-                    //});
+                    });
                 } else {
                     self.loading(false);
                 }
@@ -42,18 +42,18 @@
     }
 
     this.reloadBooks = function () {
-        //return $.get(window.getBooksUrl).done(function(response) {
-        //    if (response.result) {
-        //        var books = response.data;
-        //        for (var i = 0; i < books.length; i++) {
-        //            var book = books[i];
-        //            var bookViewModel = new BookViewModel(self);
-        //            bookViewModel.id(book.Id);
-        //            bookViewModel.title(book.Title);
-        //            bookViewModel.annotation(book.Annotation);
-        //            self.books.push(bookViewModel);
-        //        }
-        //    }
-        //});
+        return $.get(window.getBooksUrl).done(function(response) {
+            if (response.result) {
+                var books = response.data;
+                for (var i = 0; i < books.length; i++) {
+                    var book = books[i];
+                    var bookViewModel = new BookViewModel(self);
+                    bookViewModel.id(book.Id);
+                    bookViewModel.title(book.Title);
+                    bookViewModel.annotation(book.Annotation);
+                    self.books.push(bookViewModel);
+                }
+            }
+        });
     }
 }

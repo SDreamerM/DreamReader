@@ -1,4 +1,5 @@
-﻿using DreamReader.Database.Entities;
+﻿using System.Data.Entity;
+using DreamReader.Database.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DreamReader.Database
@@ -12,8 +13,8 @@ namespace DreamReader.Database
             return new DreamReaderContext();
         }
 
-        //public DbSet<Book> Books { get; set; }
-        //public DbSet<Section> Sections { get; set; }
-        //public DbSet<SectionRow> SectionRows { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<SectionRow> SectionRows { get; set; }
     }
 }
