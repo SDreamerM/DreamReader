@@ -86,7 +86,7 @@ namespace DreamReader.Web.Controllers
                 }
                 AddErrors(result);
             }
-            return JsonFailure("Get ModelState Errors");
+            return JsonFailure(GetModelStateError());
         }
 
         [HttpPost]

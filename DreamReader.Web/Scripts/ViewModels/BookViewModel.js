@@ -1,4 +1,4 @@
-﻿function BookViewModel(DreamReaderViewModel) {
+﻿function BookViewModel(dreamReaderViewModel) {
     var self = this;
 
     this.id = ko.observable(0);
@@ -7,7 +7,7 @@
     this.sections = ko.observableArray([]);
 
     this.read = function () {
-        DreamReaderViewModel.loading(true);
+        dreamReaderViewModel.loading(true);
 
         $.get(window.getBookUrl, { bookId: self.id() }).done(function(response) {
             if (response.result) {
@@ -29,8 +29,8 @@
                 }
 
                 $('#book-modal').modal('show');
-                DreamReaderViewModel.loading(false);
-                DreamReaderViewModel.selectedBook(self);
+                dreamReaderViewModel.loading(false);
+                dreamReaderViewModel.selectedBook(self);
 
             }
         });
@@ -38,6 +38,6 @@
 
     this.close = function () {
         $('#book-modal').modal('hide');
-        DreamReaderViewModel.selectedBook(null);
+        dreamReaderViewModel.selectedBook(null);
     }
 }

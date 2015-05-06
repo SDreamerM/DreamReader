@@ -1,4 +1,4 @@
-﻿function SignInViewModel(DreamReaderViewModel) {
+﻿function SignInViewModel(dreamReaderViewModel) {
     var self = this;
 
     this.email = ko.observable('').extend({ required: true, email: true });
@@ -9,13 +9,14 @@
 
     this.errors = ko.validation.group(self);
 
-    this.showValidation = ko.observable(false);
+    this.showEmailValidation = ko.observable(false);
+    this.showPasswordValidation = ko.observable(false);
     this.email.subscribe(function () {
-        self.showValidation(true);
+        self.showEmailValidation(true);
         self.validationMessage('');
     });
     this.password.subscribe(function () {
-        self.showValidation(true);
+        self.showPasswordValidation(true);
         self.validationMessage('');
     });
 
@@ -35,8 +36,9 @@
                 }
             }).done(function(response) {
                 if (response.result) {
-                    var model = response.data;
-                    DreamReaderViewModel.isAuthenticated(true);
+                    $('#sign-in-modal').modal('hide');
+                    dreamReaderViewModel.reloadBooks();
+                    dreamReaderViewModel.isAuthenticated(true);
                 } else {
                     self.validationMessage(response.message);
                 }

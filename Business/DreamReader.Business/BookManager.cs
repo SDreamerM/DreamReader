@@ -45,6 +45,7 @@ namespace DreamReader.Business
                 book.Title = file.TitleInfo.BookTitle.ToString();
                 book.Annotation = file.TitleInfo.Annotation.ToString();
 
+                var rows = file.MainBody.Sections.Sum(x => x.Content.Count);
                 foreach (var sectionItem in file.MainBody.Sections)
                 {
                     var section = new Section(book);

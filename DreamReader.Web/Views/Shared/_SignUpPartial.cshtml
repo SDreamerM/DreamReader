@@ -7,17 +7,17 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !email.isValid(), 'has-success': showValidation() && email.isValid() }">
+                    <div class="form-group" data-bind="css: { 'has-error': showEmailValidation() && !email.isValid(), 'has-success': showEmailValidation() && email.isValid() }">
                         <label class="control-label" for="sign-up-modal-email">Email address</label>
                         <input type="email" class="form-control" id="sign-up-modal-email" placeholder="Enter email" data-bind="value: email">
                         <p class="help-block" data-bind="validationMessage: email"></p>
                     </div>
-                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !password.isValid(), 'has-success': showValidation() && password.isValid() }">
+                    <div class="form-group" data-bind="css: { 'has-error': showPasswordValidation() && !password.isValid(), 'has-success': showPasswordValidation() && password.isValid() }">
                         <label class="control-label" for="sign-up-modal-password">Password</label>
                         <input type="password" class="form-control" id="sign-up-modal-password" placeholder="Password" data-bind="value: password">
                         <p class="help-block" data-bind="validationMessage: password"></p>
                     </div>
-                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !confirmPassword.isValid(), 'has-success': showValidation() && confirmPassword.isValid() }">
+                    <div class="form-group" data-bind="css: { 'has-error': showConfirmPasswordValidation() && !confirmPassword.isValid(), 'has-success': showConfirmPasswordValidation() && confirmPassword.isValid() }">
                         <label class="control-label" for="sign-up-modal-confirm-password">Confrim Password</label>
                         <input type="password" class="form-control" id="sign-up-modal-confirm-password" placeholder="Confirm Password" data-bind="value: confirmPassword">
                         <p class="help-block" data-bind="validationMessage: confirmPassword"></p>

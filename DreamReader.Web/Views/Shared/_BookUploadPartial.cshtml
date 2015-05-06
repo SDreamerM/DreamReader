@@ -7,7 +7,6 @@
             </div>
             <div class="modal-body">
                 <form>
-
                     <div class="form-group text-right" id="file-form-group">
                         <span class="btn btn-primary fileinput-button">
                             <i class="glyphicon glyphicon-plus"></i>
@@ -19,16 +18,6 @@
                         <div class="progress-bar progress-bar-primary"></div>
                     </div>
 
-                    @*<div class="form-group" data-bind="css: { 'has-error': showValidation() && !email.isValid(), 'has-success': showValidation() && email.isValid() }">
-                        <label class="control-label" for="sign-in-modal-email">Email address</label>
-                        <input type="email" class="form-control" id="sign-in-modal-email" placeholder="Enter email" data-bind="value: email">
-                        <p class="help-block" data-bind="validationMessage: email"></p>
-                    </div>
-                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !password.isValid(), 'has-success': showValidation() && password.isValid() }">
-                        <label class="control-label" for="sign-in-modal-password">Password</label>
-                        <input type="password" class="form-control" id="sign-in-modal-password" placeholder="Password" data-bind="value: password">
-                        <p class="help-block" data-bind="validationMessage: password"></p>
-                    </div>*@
                     <div class="form-group has-error validation-message-container">
                         <p class="help-block" data-bind="html: validationMessage"></p>
                     </div>

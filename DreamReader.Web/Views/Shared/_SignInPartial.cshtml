@@ -7,12 +7,12 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !email.isValid(), 'has-success': showValidation() && email.isValid() }">
+                    <div class="form-group" data-bind="css: { 'has-error': showEmailValidation() && !email.isValid(), 'has-success': showEmailValidation() && email.isValid() }">
                         <label class="control-label" for="sign-in-modal-email">Email address</label>
                         <input type="email" class="form-control" id="sign-in-modal-email" placeholder="Enter email" data-bind="value: email">
                         <p class="help-block" data-bind="validationMessage: email"></p>
                     </div>
-                    <div class="form-group" data-bind="css: { 'has-error': showValidation() && !password.isValid(), 'has-success': showValidation() && password.isValid() }">
+                    <div class="form-group" data-bind="css: { 'has-error': showPasswordValidation() && !password.isValid(), 'has-success': showPasswordValidation() && password.isValid() }">
                         <label class="control-label" for="sign-in-modal-password">Password</label>
                         <input type="password" class="form-control" id="sign-in-modal-password" placeholder="Password" data-bind="value: password">
                         <p class="help-block" data-bind="validationMessage: password"></p>
