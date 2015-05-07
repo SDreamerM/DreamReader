@@ -290,7 +290,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\BookHub.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\DreamReaderViewModel.cs" />
     <Compile Include="Models\SignInViewModel.cs" />

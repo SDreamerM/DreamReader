@@ -16,6 +16,8 @@
         <div class="loader-section section-right"></div>
     </div>
 
+    <div id="global-overlay" data-bind="visible: readonly"></div>
+
     @Html.Partial("_BookPartial")
     @Html.Partial("_SignUpPartial")
     @Html.Partial("_SignInPartial")
@@ -66,6 +68,7 @@
     </div>
 
     @Scripts.Render("~/bundles/script")
+    <script src="~/signalr/hubs"></script>
     <script>
         window.signUpUrl = '@Url.Action("SignUp", "Account")';
         window.signInUrl = '@Url.Action("SignIn", "Account")';

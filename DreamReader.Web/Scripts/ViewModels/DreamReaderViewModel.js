@@ -2,6 +2,7 @@
     var self = this;
 
     this.loading = ko.observable(true);
+    this.readonly = ko.observable(false);
     this.isAuthenticated = ko.observable(false);
 
     this.selectedBook = ko.observable(null);

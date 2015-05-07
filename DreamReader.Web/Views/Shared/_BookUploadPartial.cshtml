@@ -14,8 +14,27 @@
                             <input type="file" id="file" />
                         </span>
                     </div>
-                    <div id="progress" class="progress">
-                        <div class="progress-bar progress-bar-primary"></div>
+                    <div class="container-fluid" id="upload-progress-container">
+                        <label for="upload-progress">Upload Progess</label>
+                        <div id="upload-progress" class="progress">
+                            <div class="progress-bar progress-bar-primary">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="processing-progress-container" data-bind="visible: uploaded">
+                        <label for="book-section-processed-progress">Book Sections Processed</label>
+                        <div id="book-section-processed-progress" class="progress">
+                            <div class="progress-bar progress-bar-primary">
+                                <span></span>
+                            </div>
+                        </div>
+                        <label for="book-section-row-processed-progress">Book Section Rows Processed</label>
+                        <div id="book-section-row-processed-progress" class="progress">
+                            <div class="progress-bar progress-bar-primary">
+                                <span></span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group has-error validation-message-container">

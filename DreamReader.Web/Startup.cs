@@ -9,6 +9,7 @@ namespace DreamReader.Web
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
             ConfigureAuth(app);
         }
     }

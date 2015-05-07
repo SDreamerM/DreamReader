@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Linq;
 using DreamReader.Business.Definitions;
 using DreamReader.Business.DTOs;
+using DreamReader.Business.Hubs;
 using DreamReader.Database;
 using DreamReader.Database.Entities;
 using FB2Library;
@@ -44,24 +45,32 @@ namespace DreamReader.Business
                 var book = new Book(user);
                 book.Title = file.TitleInfo.BookTitle.ToString();
                 book.Annotation = file.TitleInfo.Annotation.ToString();
+                dbContext.Books.Add(book);
+                dbContext.SaveChanges();
 
+                var processedRows = 0;
+                var processedSections = 0;
+                var sections = file.MainBody.Sections.Count;
                 var rows = file.MainBody.Sections.Sum(x => x.Content.Count);
                 foreach (var sectionItem in file.MainBody.Sections)
                 {
                     var section = new Section(book);
+                    dbContext.Sections.Add(section);
+                    dbContext.SaveChanges();
+
                     foreach (var row in sectionItem.Content)
                     {
                         var sectionRow = new SectionRow(section);
                         sectionRow.Content = row.ToString();
 
                         dbContext.SectionRows.Add(sectionRow);
+                        dbContext.SaveChanges();
+
+                        BookHub.BookSectionRowProcessed(string.Format("{0} of {1} book section rows processed", ++processedRows, rows), Math.Round((decimal) processedRows*100/rows));
                     }
 
-                    dbContext.Sections.Add(section);
+                    BookHub.BookSectionProcessed(string.Format("{0} of {1} book sections processed", ++processedSections, sections), Math.Round((decimal) processedSections*100/sections));
                 }
-
-                dbContext.Books.Add(book);
-                dbContext.SaveChanges();
             }
         }
 
