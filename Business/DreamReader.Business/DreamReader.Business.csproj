@@ -77,11 +77,14 @@
   <ItemGroup>
     <Compile Include="BookManager.cs" />
     <Compile Include="Definitions\IBookManager.cs" />
+    <Compile Include="Definitions\IUserManager.cs" />
     <Compile Include="DTOs\BookDto.cs" />
+    <Compile Include="DTOs\ProfileDto.cs" />
     <Compile Include="DTOs\SectionDto.cs" />
     <Compile Include="DTOs\SectionRowDto.cs" />
     <Compile Include="Hubs\BookHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Database\DreamReader.Database\DreamReader.Database.csproj">

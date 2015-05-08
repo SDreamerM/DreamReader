@@ -18,6 +18,7 @@
 
     <div id="global-overlay" data-bind="visible: readonly"></div>
 
+    @Html.Partial("_ProfilePartial")
     @Html.Partial("_BookPartial")
     @Html.Partial("_SignUpPartial")
     @Html.Partial("_SignInPartial")
@@ -36,10 +37,10 @@
                     <li data-bind="visible: isAuthenticated()"><button type="button" class="btn btn-primary navbar-btn upload-book-btn" data-toggle="modal" data-target="#book-upload-modal">Upload Book</button></li>
                     <li class="dropdown" data-bind="visible: isAuthenticated()">
                         <a href="#" class="dropdown-toggle nav-profile-dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <img alt="Profile Image" src="http://organicthemes.com/demo/profile/files/2012/12/profile_img.png" />
+                            <img alt="Profile Image" src="" data-bind="attr: { src: profileImageUrl }" />
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
+                            <li><a href="javascript:;" data-bind="click: showProfile">Profile</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li class="divider"></li>
@@ -76,7 +77,8 @@
         window.getBooksUrl = '@Url.Action("GetBooks","Book")';
         window.getBookUrl = '@Url.Action("GetFullBook","Book")';
         window.bookUploadUrl = '@Url.Action("UploadBook", "Book")';
-        window.getDreamReaderViewModel = '@Url.Action("GetDreamReaderViewModel", "Home")';
+        window.getProfileUrl = '@Url.Action("GetProfile", "Account")';
+        window.profileImageUploadUrl = '@Url.Action("UploadProfileImage", "Account")';
     </script>
 </body>
 </html>

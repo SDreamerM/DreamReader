@@ -23,7 +23,8 @@
     width: 100%;
 }
 
-    #book-modal .modal-dialog .navbar {
+    #book-modal .modal-dialog .navbar,
+    #profile-modal .modal-dialog .navbar {
         margin-bottom: 0;
     }
 

@@ -23,6 +23,7 @@ namespace DreamReader.Web
                 .Include("~/Scripts/ViewModels/BookSectionViewModel.js")
                 .Include("~/Scripts/ViewModels/BookSectionRowViewModel.js")
                 .Include("~/Scripts/ViewModels/BookUploadViewModel.js")
+                .Include("~/Scripts/ViewModels/ProfileViewModel.js")
                 );
 
             bundles.Add(new StyleBundle("~/bundles/css")

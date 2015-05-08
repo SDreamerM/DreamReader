@@ -31,11 +31,8 @@ namespace DreamReader.Web.Controllers
         [HttpPost]
         public JsonResult UploadBook()
         {
-            for (var i = 0; i < Request.Files.Count; i++)
-            {
-                var file = Request.Files[i];
-                _bookManager.UploadBook(file.InputStream, User.Identity.GetUserId());
-            }
+            var file = Request.Files[0];
+            _bookManager.UploadBook(file.InputStream, User.Identity.GetUserId());
             return JsonSuccess(true);
         }
     }

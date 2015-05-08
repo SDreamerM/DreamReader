@@ -1,0 +1,41 @@
+﻿<div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-hidden="true" data-bind="with: profileViewModel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Profile</a>
+                            @*<ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" data-bind="click: close">Close</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>*@
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a href="javascript:;" class="thumbnail fileinput-button">
+                                <input type="file" id="profile-image-file" />
+                                <img src="~/Content/Images/no-profile-image.jpg" alt="profile" data-bind="attr: { src: profileImageUrl }" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

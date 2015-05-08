@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using DreamReader.Business.Definitions;
 using DreamReader.Database.Entities;
 using DreamReader.Web.Models;
 using Microsoft.AspNet.Identity;
@@ -11,26 +15,31 @@ namespace DreamReader.Web.Controllers
 {
     public class AccountController : BaseController
     {
-        private DreamReaderUserManager _userManager;
+        private readonly IUserManager _userManager;
+
+        private DreamReaderUserManager _dreamReaderUserManager;
         private DreamReaderSignInManager _signInManager;
 
-        public AccountController() { }
-
-        public AccountController(DreamReaderUserManager userManager, DreamReaderSignInManager signInManager)
+        public AccountController(IUserManager userManager)
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            _userManager = userManager;
         }
 
-        public DreamReaderUserManager UserManager
+        public AccountController(DreamReaderUserManager _dreamReaderUserManager, DreamReaderSignInManager signInManager)
+        {
+            SignInManager = signInManager;
+            DreamReaderUserManager = _dreamReaderUserManager;
+        }
+
+        public DreamReaderUserManager DreamReaderUserManager
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<DreamReaderUserManager>();
+                return _dreamReaderUserManager ?? HttpContext.GetOwinContext().GetUserManager<DreamReaderUserManager>();
             }
             private set
             {
-                _userManager = value;
+                _dreamReaderUserManager = value;
             }
         }
 
@@ -78,7 +87,7 @@ namespace DreamReader.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = new DreamReaderUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await DreamReaderUserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, false, false);
@@ -87,6 +96,44 @@ namespace DreamReader.Web.Controllers
                 AddErrors(result);
             }
             return JsonFailure(GetModelStateError());
+        }
+
+        [HttpPost]
+        public JsonResult UploadProfileImage()
+        {
+            var file = Request.Files[0];
+            using (var memoryStream = new MemoryStream())
+            {
+                file.InputStream.CopyTo(memoryStream);
+                var base64 = Convert.ToBase64String(memoryStream.ToArray());
+
+                _userManager.UpdateProfileImage(User.Identity.GetUserId(), base64);
+
+                var thumbnailUrl = string.Format(@"data:image/png;base64,{0}", base64);
+                return JsonSuccess(thumbnailUrl);
+            }
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public JsonResult GetProfile()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return JsonSuccess(new ProfileViewModel
+                {
+                    IsAuthenticated = User.Identity.IsAuthenticated,
+                    ProfileImageUrl = Url.Content("~/Content/Images/no-profile-image.jpg")
+                });
+            }
+
+            var profile = _userManager.GetProfile(User.Identity.GetUserId());
+            var profileViewModel = new ProfileViewModel
+            {
+                IsAuthenticated = User.Identity.IsAuthenticated,
+                ProfileImageUrl = profile.Base64ProfileImage == null ? Url.Content("~/Content/Images/no-profile-image.jpg") : string.Format(@"data:image/png;base64,{0}", profile.Base64ProfileImage)
+            };
+            return JsonSuccess(profileViewModel);
         }
 
         [HttpPost]

@@ -39,7 +39,8 @@ namespace DreamReader.Web
 
             // TODO: Register your types here
             container.RegisterType<IBookManager, BookManager>();
-            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<IUserManager, UserManager>();
+            container.RegisterType<AccountController>(new InjectionConstructor(typeof(IUserManager)));
         }
     }
 }

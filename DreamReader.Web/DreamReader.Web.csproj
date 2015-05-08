@@ -200,6 +200,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dreamreader.css" />
+    <Content Include="Content\Images\no-profile-image.jpg" />
     <Content Include="Content\jquery.fileupload.css" />
     <Content Include="Content\loader.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -267,6 +268,7 @@
     <Content Include="Scripts\ViewModels\BookUploadViewModel.js" />
     <Content Include="Scripts\ViewModels\BookViewModel.js" />
     <Content Include="Scripts\ViewModels\DreamReaderViewModel.js" />
+    <Content Include="Scripts\ViewModels\ProfileViewModel.js" />
     <Content Include="Scripts\ViewModels\SignInViewModel.js" />
     <Content Include="Scripts\ViewModels\SignUpViewModel.js" />
     <Content Include="Web.config" />
@@ -291,7 +293,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BookViewModel.cs" />
-    <Compile Include="Models\DreamReaderViewModel.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\SignInViewModel.cs" />
     <Compile Include="Models\SignUpViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -303,6 +305,7 @@
     <Content Include="ApplicationInsights.config" />
     <None Include="Properties\PublishProfiles\DreamReaderWeb.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_ProfilePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

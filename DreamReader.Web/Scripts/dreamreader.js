@@ -53,6 +53,19 @@
         }
     });
 
+    $('#profile-image-file').fileupload({
+        url: window.profileImageUploadUrl,
+        dataType: 'json',
+        done: function(event, data) {
+            var response = data.result;
+            if (response.result) {
+                dreamReaderViewModel.profileViewModel().profileImageUrl(response.data);
+            } else {
+                dreamReaderViewModel.bookUploadViewModel().validationMessage(response.message);
+            }
+        }
+    });
+
     $('#book-upload-modal').on('hidden.bs.modal', function () {
         $('#progress .progress-bar').css('width', '0');
         dreamReaderViewModel.bookUploadViewModel().validationMessage('');

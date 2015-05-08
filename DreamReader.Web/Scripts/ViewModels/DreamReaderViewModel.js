@@ -3,6 +3,7 @@
 
     this.loading = ko.observable(true);
     this.readonly = ko.observable(false);
+    this.profileImageUrl = ko.observable('');
     this.isAuthenticated = ko.observable(false);
 
     this.selectedBook = ko.observable(null);
@@ -10,13 +11,15 @@
 
     this.signUpViewModel = ko.observable(new SignUpViewModel(self));
     this.signInViewModel = ko.observable(new SignInViewModel(self));
+    this.profileViewModel = ko.observable(new ProfileViewModel(self));
     this.bookUploadViewModel = ko.observable(new BookUploadViewModel(self));
 
     this.init = function () {
-        $.get(window.getDreamReaderViewModel).done(function (response) {
+        $.get(window.getProfileUrl).done(function (response) {
             if (response.result) {
                 var model = response.data;
                 self.isAuthenticated(model.IsAuthenticated);
+                self.profileImageUrl(model.ProfileImageUrl);
                 if (self.isAuthenticated()) {
                     self.reloadBooks().done(function (response) {
                         self.loading(false);
@@ -54,6 +57,22 @@
                     bookViewModel.annotation(book.Annotation);
                     self.books.push(bookViewModel);
                 }
+            }
+        });
+    }
+
+    this.showProfile = function() {
+        $.ajax({
+            url: window.getProfileUrl,
+            type: 'GET',
+            data: {
+                __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val()
+            }
+        }).done(function(response) {
+            if (response.result) {
+                var model = response.data;
+                self.profileViewModel().profileImageUrl(model.ProfileImageUrl);
+                $('#profile-modal').modal('show');
             }
         });
     }
