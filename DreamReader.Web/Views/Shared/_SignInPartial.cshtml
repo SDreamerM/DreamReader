@@ -1,12 +1,12 @@
 ﻿<div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="sign-in-modal-title" aria-hidden="true" data-bind="with: signInViewModel">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" data-bind="visible: !signingIn()">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="sign-in-modal-title">Sign In</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form data-bind="visible: !signingIn()">
                     <div class="form-group" data-bind="css: { 'has-error': showEmailValidation() && !email.isValid(), 'has-success': showEmailValidation() && email.isValid() }">
                         <label class="control-label" for="sign-in-modal-email">Email address</label>
                         <input type="email" class="form-control" id="sign-in-modal-email" placeholder="Enter email" data-bind="value: email">
@@ -17,13 +17,16 @@
                         <input type="password" class="form-control" id="sign-in-modal-password" placeholder="Password" data-bind="value: password">
                         <p class="help-block" data-bind="validationMessage: password"></p>
                     </div>
-                    <div class="form-group has-error validation-message-container">
-                        <p class="help-block" data-bind="html: validationMessage"></p>
-                    </div>
+                    <div class="alert alert-danger" role="alert" data-bind="visible: validationMessage().length > 0, html: validationMessage"></div>
                 </form>
+                <div class="container-fluid" data-bind="visible: signingIn">
+                    <label for="sign-in-progress">Signing you in</label>
+                    <div id="sign-in-progress" class="progress">
+                        <div class="progress-bar progress-bar-primary progress-bar-striped active"></div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="modal-footer" data-bind="visible: !signingIn()">
                 <button type="button" class="btn btn-primary" data-bind="click: signIn">Sign In</button>
             </div>
         </div>

@@ -20,11 +20,16 @@
         self.validationMessage('');
     });
 
+    this.signingIn = ko.observable(false);
+
     this.signIn = function () {
         self.email.valueHasMutated();
         self.password.valueHasMutated();
 
         if (self.errors().length === 0) {
+            self.signingIn(true);
+            dreamReaderViewModel.readonly(true);
+
             $.ajax({
                 url: window.signInUrl,
                 type: 'POST',
@@ -36,10 +41,23 @@
                 }
             }).done(function(response) {
                 if (response.result) {
-                    $('#sign-in-modal').modal('hide');
-                    dreamReaderViewModel.reloadBooks();
-                    dreamReaderViewModel.isAuthenticated(true);
+                    $.get(window.getProfileUrl).done(function(response) {
+                        if (response.result) {
+                            var model = response.data;
+                            dreamReaderViewModel.isAuthenticated(model.IsAuthenticated);
+                            dreamReaderViewModel.profileImageUrl(model.ProfileImageUrl);
+
+                            dreamReaderViewModel.reloadBooks().done(function(response) {
+                                if (response.result) {
+                                    $('#sign-in-modal').modal('hide');
+                                    dreamReaderViewModel.readonly(false);
+                                }
+                            });
+                        }
+                    });
                 } else {
+                    self.signingIn(false);
+                    dreamReaderViewModel.readonly(false);
                     self.validationMessage(response.message);
                 }
             });

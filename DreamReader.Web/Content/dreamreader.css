@@ -49,3 +49,14 @@
     z-index: 10001;
     position: absolute;
 }
+
+#sign-up-progress .progress-bar,
+#sign-in-progress .progress-bar {
+    width: 100%;
+}
+
+#sign-up-modal .alert,
+#sign-in-modal .alert {
+    margin-bottom: 0;
+    text-align: center;
+}
